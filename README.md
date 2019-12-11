@@ -28,7 +28,7 @@ It is different from other Lemmagen wrappers like [this one on PyPi](https://pyp
 ## Installation and requirements
 
 1. `python 2.7+` or `python 3.4+`
-2. `pybind11`
+2. `pybind11` (optional, only when building from the source)
 
 Prebuilt `whl` packages are provided for 64-bit Linux systems running python `2.7`, `3.4`, `3.5`, `3.6`, `3.7`, and `3.8`. Check the `dist` folder and install the right package, e.g. for python 3.8:
 
