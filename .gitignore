@@ -1,0 +1,52 @@
+# Common IDEs
+*.swp
+.idea/
+.buildpath
+.project
+.settings
+atlassian-ide-plugin.xml
+*.sublime-*
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+env/
+build/
+develop-eggs/
+eggs/
+.eggs/
+*.egg-info/
+.installed.cfg
+*.egg
+tmp/
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*,cover
+.hypothesis/
+
+# Sphinx documentation
+docs/_build/
+
+# pyenv
+.python-version
+
+# build script for diferent pythons
+build_dist_py.sh

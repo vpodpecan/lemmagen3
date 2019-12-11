@@ -1,0 +1,6 @@
+include CHANGELOG
+include LICENSE
+include README.md
+
+include src/lemmagen3/models/*.bin
+include src/lemmagen3/cpp/*.h
