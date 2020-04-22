@@ -4,15 +4,15 @@
 
 It is different from other Lemmagen wrappers like [this one on PyPi](https://pypi.org/project/Lemmagen/) because it offers a clean, fast OO interface built with the excellent [pybind11 library](https://github.com/pybind/pybind11) and supports an additional language (Croatian). The models for Slovene and Serbian were also updated. In total, 19 languages are supported:
 
-1. Bulgarian: `bg`
-2. Croatian: `hr`
-3. Czech: `cs`
-4. English: `en`
-5. Estonian: `et`            
-6. Farsi/Persian: `fa`      
-7. French: `fr`  
-8. German: `de`
-9. Hungarian: `hu`         
+1.  Bulgarian: `bg`
+2.  Croatian: `hr`
+3.  Czech: `cs`
+4.  English: `en`
+5.  Estonian: `et`
+6.  Farsi/Persian: `fa`      
+7.  French: `fr`  
+8.  German: `de`
+9.  Hungarian: `hu`
 10. Italian: `it`
 11. Macedonian: `mk`        
 12. Polish: `pl`     
@@ -27,8 +27,8 @@ It is different from other Lemmagen wrappers like [this one on PyPi](https://pyp
 
 ## Installation and requirements
 
-1. `python 2.7+` or `python 3.4+`
-2. `pybind11` (optional, only when building from the source)
+1.  `python 2.7+` or `python 3.4+`
+2.  `pybind11` (optional, only when building from the source)
 
 Prebuilt `whl` packages are provided for 64-bit Linux systems running python `2.7`, `3.4`, `3.5`, `3.6`, `3.7`, and `3.8`. Check the `dist` folder and install the right package, e.g. for python 3.8:
 

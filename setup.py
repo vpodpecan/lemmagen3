@@ -108,7 +108,7 @@ setup(
     version=__version__,
     author='Vid Podpečan',
     author_email='vid.podpecan@ijs.si',
-    url='http://lemmatise.ijs.si/',
+    url='https://github.com/vpodpecan/lemmagen3/',
     description='A Python2/3 wrapper for Lemmagen lemmatizer supporting 19 languages.',
     long_description='''This package wraps the Lemmagen lemmatizer with a clean OO interface. It supports 19 languages: bg,cs,de,en,es,et,fa,fr,hr,hu,it,mk,pl,ro,ru,sk,sl,sr,uk. Support for Croatian was added and Slovene and Serbian were updated. The package is named lemmagen3 to avoid name conflicts with the similar lemmagen package on PyPi.''',
     ext_modules=ext_modules,
