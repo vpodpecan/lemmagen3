@@ -41,14 +41,14 @@ RdrLemmatizer::RdrLemmatizer(const char *acFileName) {
 }
 
 RdrLemmatizer::RdrLemmatizer() {
-	this->abData = (byte*) abDataStatic;
+	this->abData = (unsigned char*) abDataStatic;
 	this->iDataLen = iDataLenStatic;
 }
 
 //-------------------------------------------------------------------------------------------
 //destructor
 RdrLemmatizer::~RdrLemmatizer() {
-	if (this->abData != (byte*) abDataStatic)
+	if (this->abData != (unsigned char*) abDataStatic)
 		delete[] abData;
 }
 
@@ -61,15 +61,15 @@ int RdrLemmatizer::SizeOfTree() const{
 //-------------------------------------------------------------------------------------------
 //lematizes word according to this data
 char *RdrLemmatizer::Lemmatize(const char *acWord) const{
-	byte bWordLen = strlen(acWord);
+	unsigned char bWordLen = strlen(acWord);
 
 	dword iAddr = DataStart;
 	dword iParentAddr = DataStart;
 	dword iTmpAddr;
 	char bLookChar = bWordLen;
-	byte bType = abData[iAddr];
+	unsigned char bType = abData[iAddr];
 
-    if (this->abData == (byte*) abDataStatic) {
+    if (this->abData == (unsigned char*) abDataStatic) {
         throw std::runtime_error("Cannot lemmatize: please load a model first.");
     }
 
@@ -78,7 +78,7 @@ char *RdrLemmatizer::Lemmatize(const char *acWord) const{
 
 		//check if additional characters match
 		if ((bType & BitAddChar) == BitAddChar) {
-			byte bNewSufxLen = abData[iTmpAddr];
+			unsigned char bNewSufxLen = abData[iTmpAddr];
 			iTmpAddr += LenSpecLen;
 
 			bLookChar -= bNewSufxLen;
@@ -86,7 +86,7 @@ char *RdrLemmatizer::Lemmatize(const char *acWord) const{
 			//test additional chars if ok
 			if (bLookChar>=0)
 				do bNewSufxLen--;
-				while (bNewSufxLen!=255 && abData[iTmpAddr+bNewSufxLen] == (byte) acWord[bLookChar+bNewSufxLen]);
+				while (bNewSufxLen!=255 && abData[iTmpAddr+bNewSufxLen] == (unsigned char) acWord[bLookChar+bNewSufxLen]);
 
 			//wrong node, take parents rule
 			if (bNewSufxLen!=255) {	iAddr = iParentAddr; break; }
@@ -107,7 +107,7 @@ char *RdrLemmatizer::Lemmatize(const char *acWord) const{
 			if((bType & BitInternal) == BitInternal) {
 				//go to the hashtable position 0(NULL) and look idf address is not NULL
 				iTmpAddr += ModLen;
-				byte bChar = abData[iTmpAddr];
+				unsigned char bChar = abData[iTmpAddr];
 				GETDWORD(,iTmpAddr,iTmpAddr+CharLen);
 				if (bChar == NULL && iTmpAddr!=NULL) {
 					//we have a candidate for entireword, redirect addresses
@@ -123,8 +123,8 @@ char *RdrLemmatizer::Lemmatize(const char *acWord) const{
 
 		//find best node in hash table
 		if((bType & BitInternal) == BitInternal) {
-			byte bMod = abData[iTmpAddr];
-			byte bChar = acWord[bLookChar];
+			unsigned char bMod = abData[iTmpAddr];
+			unsigned char bChar = acWord[bLookChar];
 
 			iTmpAddr += ModLen + (bChar%bMod)*(AddrLen+CharLen);
 
@@ -149,13 +149,13 @@ char *RdrLemmatizer::Lemmatize(const char *acWord) const{
 	//we have (100%) node of type rule for lemmatization - now it's straight forward to lemmatize
 	//read out rule
 	iTmpAddr = iAddr + FlagLen;
-	byte iFromLen = abData[iTmpAddr];
+	unsigned char iFromLen = abData[iTmpAddr];
 	iTmpAddr += LenSpecLen;
-	byte iToLen = abData[iTmpAddr];
+	unsigned char iToLen = abData[iTmpAddr];
 	iTmpAddr += LenSpecLen;
 
 	//prepare output buffer
-	byte iStemLen = bWordLen - iFromLen;
+	unsigned char iStemLen = bWordLen - iFromLen;
 	char *acReturn = new char[iStemLen + iToLen + 1];
 
 	//do actual lematiration using given rule
@@ -171,7 +171,7 @@ char *RdrLemmatizer::Lemmatize(const char *acWord) const{
 void RdrLemmatizer::ToString(ostream &os, dword iStartAddr, int iDepth, char *acParSufx, char *acParDev, char cNewChar) const {
 	int iAddr = iStartAddr;
 	dword *iSubs = NULL;
-	byte *bSubs = NULL;
+	unsigned char *bSubs = NULL;
 	int iSubsNum = 0;
 	char *acSufx = NULL;
 	char *acSufxDev = NULL;
@@ -246,7 +246,7 @@ void RdrLemmatizer::ToString(ostream &os, dword iStartAddr, int iDepth, char *ac
 
 			GETBYTEMOVE(, iSubsNum, ModLen);
 			iSubs = new dword[iSubsNum];
-			bSubs = new byte[iSubsNum];
+			bSubs = new unsigned char[iSubsNum];
 
 			ostringstream ossLine1;
 			ostringstream ossLine2;
@@ -328,7 +328,7 @@ void RdrLemmatizer::ToStringHex(ostream &os) const {
 void RdrLemmatizer::LoadBinaryStream(istream &is) {
 	iDataLen =0;
 	is.read((char*) &iDataLen, 4);
-	abData = new byte[iDataLen];
+	abData = new unsigned char[iDataLen];
 	is.read((char*) abData, iDataLen);
 }
 

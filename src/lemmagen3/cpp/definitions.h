@@ -41,7 +41,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 //-------------------------------------------------------------------------------------------
 //typedefs
-typedef unsigned char byte;
+// typedef unsigned char byte;
 typedef unsigned short word;
 typedef unsigned int dword;
 typedef unsigned long long qword;
@@ -70,7 +70,7 @@ typedef unsigned long long qword;
 #define TypeIntrAC		(BitDefault | BitAddChar | BitInternal)
 
 //-------------------------------------------------------------------------------------------
-//main data structure and it's length 
+//main data structure and it's length
 static dword iDataLenStatic = DATA_LEN;
 static qword abDataStatic[] = DATA_TBL;
 
@@ -81,7 +81,7 @@ static qword abDataStatic[] = DATA_TBL;
 				type wVar = *((dword*) &abData[wAddr]) & 0x00FFFFF
 #else
 	#define GETDWORD(type, wVar, wAddr) \
-				type wVar = *((dword *) &abData[wAddr]) 
+				type wVar = *((dword *) &abData[wAddr])
 #endif
 
 #define GETBYTEMOVE(type, bByte, iSize) \
@@ -103,7 +103,7 @@ using namespace std;
 
 class RdrLemmatizer{
 public:
-	byte *abData;
+	unsigned char *abData;
 	int iDataLen;
 
 public:
@@ -116,11 +116,10 @@ public:
 	char *Lemmatize(const char *acWord) const;
 
 	void ToStringHex(ostream &os) const;
-	void ToString(ostream &os = cout, dword iStartAddr = DataStart, int iDepth = 0, 
+	void ToString(ostream &os = cout, dword iStartAddr = DataStart, int iDepth = 0,
 		char *acParSufx = "", char *acParDev = "", char cNewChar=NULL) const;
 
 	void LoadBinary(const char *acFileName);
 	void LoadBinaryStream(istream &is);
 
 };
-
