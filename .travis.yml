@@ -2,6 +2,8 @@ jobs:
   include:
     # perform a linux build
     - services: docker
+      before_install:
+        - sudo apt-get -y install python3-pip
     # and a mac build
     - os: osx
       language: shell

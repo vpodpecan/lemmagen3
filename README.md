@@ -27,24 +27,20 @@ It is different from other Lemmagen wrappers like [this one on PyPi](https://pyp
 
 ## Installation and requirements
 
-1.  `python 2.7+` or `python 3.4+`
-2.  `pybind11` (optional, only when building from the source)
-
-Prebuilt `whl` packages are provided for 64-bit Linux systems running python `2.7`, `3.4`, `3.5`, `3.6`, `3.7`, and `3.8`. Check the `dist` folder and install the right package, e.g. for python 3.8:
 
 ```sh
-pip install lemmagen3-3.2-cp38-cp38-linux_x86_64.whl
+pip install lemmagen3
 ```
+will install the module for `python 2.7+` and `python 3.5+`.
 
-For other OS/CPU/python combinations you will have to build the package from the source. `pip` can do that for you but you will need C/C++ compiler, python headers and `pybind11`. Then you can build `lemmagen3` as follows:
+
+If you want to build it from source, you will need `pybind11` and a C++ compiler.
+Then run
 
 ```sh
-pip install lemmagen3-3.2.tar.gz
+python setup.py install
 ```
-
-This will also work on Windows systems but you will need Microsoft Visual C++ 14 or newer. I might provide Windows `whl` builds in the future if there is sufficient interest.
-
-
+which will compile and install the module.
 
 ## How to use
 
@@ -92,15 +88,15 @@ Note also that `lemmagen3` operates on unicode encoded strings so if you use pyt
 
 Please note that this repository contains code and binary models compiled and built from different sources which are under different licenses:
 
-1. C++ files and headers come from [Lemmagen](http://lemmatise.ijs.si/) and are modified and adapted to work as a Python module [**LGPL**]
-2.	Binary models are built from Multext and [Multext-east](http://nl.ijs.si/ME/V4/) sources:
-    * Language resources used to build Farsi/Persian, Macedonian, Polish, and Russian models are for **non-commercial use only**.
-    * Language resource for other supported languages are released under **CC BY-SA 4.0**.
+1.  C++ files and headers come from [Lemmagen](http://lemmatise.ijs.si/) and are modified and adapted to work as a Python module (**LGPL**)
+2.  Binary models are built from Multext and [Multext-east](http://nl.ijs.si/ME/V4/) sources:
+    *   Language resources used to build Farsi/Persian, Macedonian, Polish, and Russian models are for **non-commercial use only**.
+    *   Language resource for other supported languages are released under **CC BY-SA 4.0**.
 
-The rest of the code in this repository was created by the author and is licensed under the MIT license.
+The rest of the code in this repository was created by the author and is licensed under the **MIT license**.
 
 
 ## Authors
 
-- `lemmagen3` is developed by Vid Podpečan (vid.podpecan@ijs.si).
-- The Lemmagen lemmatizer was developed by [Matjaž Juršič](http://lemmatise.ijs.si/Home/Contact).
+-   `lemmagen3` is developed by Vid Podpečan (vid.podpecan@ijs.si).
+-   The Lemmagen lemmatizer was developed by [Matjaž Juršič](http://lemmatise.ijs.si/Home/Contact).
