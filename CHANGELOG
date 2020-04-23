@@ -1,4 +1,7 @@
-Version 3.2
------------
-This is the first public release which follows two internal unreleased versions.
+Version 3.2.2
+-------------
+TravisCI is now used for building wheels for all platforms (Linux, Mac, Windows) and the code was patched for manylinux2010 requirements.
 
+Version 3.2.1
+-------------
+This is the first public release which follows two internal unreleased versions.
