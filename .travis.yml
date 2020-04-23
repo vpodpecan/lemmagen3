@@ -4,6 +4,7 @@ jobs:
     - services: docker
       before_install:
         - sudo apt-get -y install python3-pip
+        - sudo apt-get -y install python3-setuptools
     # and a mac build
     - os: osx
       language: shell
