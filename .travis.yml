@@ -1,20 +1,23 @@
-language: python
-
 jobs:
   include:
     # perform a linux build
     - services: docker
     # and a mac build
-    # - os: osx
-    #   language: shell
+    - os: osx
+      language: shell
     # and a windows build
-    # - os: windows
-    #   language: shell
-    #   before_install:
-    #     - choco install python --version 3.8.0
-    #     - export PATH="/c/Python38:/c/Python38/Scripts:$PATH"
-    #     # make sure it's on PATH as 'python3'
-    #     - ln -s /c/Python38/python.exe /c/Python38/python3.exe
+    - os: windows
+      language: shell
+      before_install:
+        # install Python 3 and make sure it's on PATH as 'python3'
+        - choco install python --version 3.8.0
+        - export PATH="/c/Python38:/c/Python38/Scripts:$PATH"
+        - ln -s /c/Python38/python.exe /c/Python38/python3.exe
+
+env:
+  global:
+    - TWINE_USERNAME=__token__
+    # Note: TWINE_PASSWORD is set to an API token in Travis settings
 
 install:
   - python3 -m pip install cibuildwheel==1.3.0
@@ -22,4 +25,12 @@ install:
 script:
   # build the wheels, put them into './wheelhouse'
   - python3 -m cibuildwheel --output-dir wheelhouse
-  - ls heelhouse/
+  - ls wheelhouse/
+
+after_success:
+  # if the release was tagged, upload them to PyPI
+  - |
+    if [[ $TRAVIS_TAG ]]; then
+      python3 -m pip install twine
+      python3 -m twine upload wheelhouse/*.whl
+    fi

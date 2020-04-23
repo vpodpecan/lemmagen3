@@ -4,7 +4,7 @@ from setuptools.command.build_ext import build_ext
 import sys
 import setuptools
 
-__version__ = '3.2.1'
+__version__ = '3.2.2'
 
 
 class get_pybind_include(object):
@@ -113,8 +113,8 @@ setup(
     long_description='''This package wraps the Lemmagen lemmatizer with a clean OO interface. It supports 19 languages: bg,cs,de,en,es,et,fa,fr,hr,hu,it,mk,pl,ro,ru,sk,sl,sr,uk. Support for Croatian was added and Slovene and Serbian were updated. The package is named lemmagen3 to avoid name conflicts with the similar lemmagen package on PyPi.''',
     ext_modules=ext_modules,
     include_package_data=True,
-    install_requires=['pybind11>=2.4'],
-    setup_requires=['pybind11>=2.4'],
+    install_requires=['pybind11>=2.5'],
+    setup_requires=['pybind11>=2.5'],
     cmdclass={'build_ext': BuildExt},
     zip_safe=False,
     classifiers=[
