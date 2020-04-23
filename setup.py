@@ -1,4 +1,5 @@
 # coding=utf-8
+from os import path
 from setuptools import setup, Extension, find_packages
 from setuptools.command.build_ext import build_ext
 import sys
@@ -100,6 +101,11 @@ class BuildExt(build_ext):
             ext.extra_link_args = link_opts
         build_ext.build_extensions(self)
 
+
+this_directory = path.abspath(path.dirname(__file__))
+with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
+    long_description = f.read()
+
 setup(
     name='lemmagen3',
     packages=find_packages('src'),
@@ -110,11 +116,12 @@ setup(
     author_email='vid.podpecan@ijs.si',
     url='https://github.com/vpodpecan/lemmagen3/',
     description='A Python2/3 wrapper for Lemmagen lemmatizer supporting 19 languages.',
-    long_description='''This package wraps the Lemmagen lemmatizer with a clean OO interface. It supports 19 languages: bg,cs,de,en,es,et,fa,fr,hr,hu,it,mk,pl,ro,ru,sk,sl,sr,uk. Support for Croatian was added and Slovene and Serbian were updated. The package is named lemmagen3 to avoid name conflicts with the similar lemmagen package on PyPi.''',
+    long_description=long_description,
+    long_description_content_type='text/markdown',
     ext_modules=ext_modules,
     include_package_data=True,
-    install_requires=['pybind11>=2.5'],
-    setup_requires=['pybind11>=2.5'],
+    install_requires=['pybind11>=2.4'],
+    setup_requires=['pybind11>=2.4'],
     cmdclass={'build_ext': BuildExt},
     zip_safe=False,
     classifiers=[
