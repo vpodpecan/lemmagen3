@@ -33,7 +33,6 @@ pip install lemmagen3
 ```
 will install the module for `python 2.7+` and `python 3.5+`.
 
-
 If you want to build it from source, you will need `pybind11` and a C++ compiler.
 Then run
 
@@ -41,6 +40,13 @@ Then run
 python setup.py install
 ```
 which will compile and install the module.
+
+**Note:**  If you use `python 3.5.0` or `3.5.1` you will likely get the error shown below. This is a known bug in these two versions so please consider upgrading your Python.
+
+```sh
+ImportError: ..._lemmagen.cpython-35m-x86_64-linux-gnu.so: undefined symbol: _PyThreadState_UncheckedGet
+```
+
 
 ## How to use
 
