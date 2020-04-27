@@ -1,3 +1,7 @@
+Version 3.3.1
+-------------
+Models for Slovene (sl), Croatian (hr) and Serbian (sr) are improved.
+
 Version 3.2.2
 -------------
 TravisCI is now used for building wheels for all platforms (Linux, Mac, Windows) and the code was patched for manylinux2010 requirements.
