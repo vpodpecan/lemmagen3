@@ -2,7 +2,11 @@
 
 `lemmagen3` is a Python2/3 wrapper for the [Lemmagen lemmatizer](http://lemmatise.ijs.si/).
 
-It is different from other Lemmagen wrappers like [this one on PyPi](https://pypi.org/project/Lemmagen/) because it offers a clean, fast OO interface built with the excellent [pybind11 library](https://github.com/pybind/pybind11) and supports an additional language (Croatian). The models for Slovene and Serbian were also updated. In total, 19 languages are supported:
+It is different from other Lemmagen wrappers like [this one on PyPi](https://pypi.org/project/Lemmagen/) because it offers a clean, fast OO interface built with the excellent [pybind11 library](https://github.com/pybind/pybind11) and supports an additional language (Croatian).
+
+Model for Slovene, Croatian and Serbian are significantly updated and make use of frequency data to prefer most frequent lemmas, e.g., for Slovene: `je->biti` instead of `je->jesti` and `od->od` instead of `od->oda`.
+
+In total, 19 languages are supported:
 
 1.  Bulgarian: `bg`
 2.  Croatian: `hr`
