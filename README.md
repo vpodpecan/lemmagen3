@@ -1,6 +1,6 @@
 ## About
 
-`lemmagen3` is a Python2/3 wrapper for the [Lemmagen lemmatizer](http://lemmatise.ijs.si/) (version [2.2](http://lemmatise.ijs.si/Download/File/Software%23LemmaGen_v2.2.zip)).
+`lemmagen3` is a Python 2/3 wrapper for the [Lemmagen lemmatizer](http://lemmatise.ijs.si/) (version [2.2](http://lemmatise.ijs.si/Download/File/Software%23LemmaGen_v2.2.zip)).
 
 It is different from other Lemmagen wrappers like [this one on PyPi](https://pypi.org/project/Lemmagen/) because it offers a clean, fast OO interface built with the excellent [pybind11 library](https://github.com/pybind/pybind11) and supports an additional language (Croatian).
 
@@ -35,15 +35,8 @@ In total, 19 languages are supported:
 ```sh
 pip install lemmagen3
 ```
-will install the module for `python 2.7+` and `python 3.5+`.
 
-If you want to build it from source, you will need `pybind11` and a C++ compiler.
-Then run
-
-```sh
-python setup.py install
-```
-which will compile and install the module.
+will install the module and language model files. Please note that on `python <=3.5` and `python 2.7` the package will be built from source so you will need a C++ compiler.
 
 **Note:**  If you use `python 3.5.0` or `3.5.1` you will likely get the error shown below. This is a known bug in these two versions so please consider upgrading your Python.
 
@@ -59,7 +52,7 @@ The following snippet illustrates how to use `lemmagen3`.
 ```python
 from lemmagen3 import Lemmatizer
 
-# first, list all supported languages
+# first, we can list all supported languages
 print(Lemmatizer.list_supported_languages())
 
 # then, create few lemmatizer objects using ISO 639-1 language codes
