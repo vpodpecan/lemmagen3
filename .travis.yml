@@ -10,6 +10,7 @@ jobs:
         - sudo apt install software-properties-common
         - sudo add-apt-repository ppa:deadsnakes/ppa -y
         - sudo apt update
+        - sudo apt remove python3.5-minimal -y
         - sudo apt install python3.8
         - sudo apt-get -y install python3-pip
         - sudo apt-get -y install python3-setuptools
@@ -26,6 +27,7 @@ jobs:
         - choco install python --version 3.8.0
         - export PATH="/c/Python38:/c/Python38/Scripts:$PATH"
         - ln -s /c/Python38/python.exe /c/Python38/python3.exe
+        - python3 -m pip install --upgrade pip
 
 env:
   global:
@@ -33,7 +35,7 @@ env:
     # Note: TWINE_PASSWORD is set to an API token in Travis settings
 
 install:
-  - python3 -m pip install cibuildwheel==1.12.0
+  - python3 -m pip install cibuildwheel==2.1.1
 
 script:
   # build the wheels, put them into './wheelhouse'
