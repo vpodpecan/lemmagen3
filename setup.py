@@ -104,7 +104,7 @@ class BuildExt(build_ext):
 
 
 this_directory = path.abspath(path.dirname(__file__))
-with io.open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
+with io.open(path.join(this_directory, 'README.md'), encoding='utf8') as f:
     long_description = f.read()
 
 setup(
@@ -113,7 +113,7 @@ setup(
     package_dir={'': 'src'},
     # ext_package=['lemmagen3'],
     version=__version__,
-    author='Vid Podpečan',
+    author='Vid Podpecan',
     author_email='vid.podpecan@ijs.si',
     url='https://github.com/vpodpecan/lemmagen3/',
     description='A Python2/3 wrapper for Lemmagen lemmatizer supporting 19 languages.',
