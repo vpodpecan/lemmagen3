@@ -95,7 +95,7 @@ static qword abDataStatic[] = DATA_TBL;
 #define GETSTRINGMOVE(type, acString, iSize) \
 			type acString = new char[iSize+1]; \
 			strncpy(acString, (char*) &abData[iAddr], iSize); \
-			acString[iSize] = NULL; \
+			acString[iSize] = 0; \
 			iAddr += iSize
 
 //-------------------------------------------------------------------------------------------
@@ -117,7 +117,7 @@ public:
 
 	void ToStringHex(ostream &os) const;
 	void ToString(ostream &os = cout, dword iStartAddr = DataStart, int iDepth = 0,
-		char *acParSufx = "", char *acParDev = "", char cNewChar=NULL) const;
+		char *acParSufx = "", char *acParDev = "", char cNewChar=0) const;
 
 	void LoadBinary(const char *acFileName);
 	void LoadBinaryStream(istream &is);

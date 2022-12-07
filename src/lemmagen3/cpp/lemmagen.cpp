@@ -109,7 +109,7 @@ char *RdrLemmatizer::Lemmatize(const char *acWord) const{
 				iTmpAddr += ModLen;
 				unsigned char bChar = abData[iTmpAddr];
 				GETDWORD(,iTmpAddr,iTmpAddr+CharLen);
-				if (bChar == NULL && iTmpAddr!=NULL) {
+				if (bChar == 0 && iTmpAddr!=0) {
 					//we have a candidate for entireword, redirect addresses
 					iParentAddr = iAddr;
 					iAddr = iTmpAddr;
@@ -161,7 +161,7 @@ char *RdrLemmatizer::Lemmatize(const char *acWord) const{
 	//do actual lematiration using given rule
 	memcpy(acReturn, acWord, iStemLen);
 	memcpy(&acReturn[iStemLen], &abData[iTmpAddr], iToLen);
-	acReturn[iStemLen + iToLen] = NULL;
+	acReturn[iStemLen + iToLen] = 0;
 
 	return acReturn;
 }
@@ -213,7 +213,7 @@ void RdrLemmatizer::ToString(ostream &os, dword iStartAddr, int iDepth, char *ac
 		}
 
 		//create and display sufixes
-		if (cNewChar != NULL) {
+		if (cNewChar != 0) {
 			int iSufxLen = 1 + iNewSufxLen + strlen(acParSufx) + 1;
 			int iSufxDevLen = 2 + iNewSufxLen + strlen(acParDev) + 1;
 
@@ -289,7 +289,7 @@ void RdrLemmatizer::ToString(ostream &os, dword iStartAddr, int iDepth, char *ac
 
 	//display sub nodes
 	for (int i = 0; i<iSubsNum; i++)
-		if (iSubs[i]!=NULL) {
+		if (iSubs[i]!=0) {
 			ToString(os, iSubs[i], iDepth + 1, acSufx, acSufxDev, bSubs[i]);
 			if (i<iSubsNum-1) os << endl;
 		}
