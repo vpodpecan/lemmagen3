@@ -1,6 +1,6 @@
 ## About
 
-`lemmagen3` is a Python 2/3 wrapper for the [Lemmagen lemmatizer](http://lemmatise.ijs.si/) (version [2.2](http://lemmatise.ijs.si/Download/File/Software%23LemmaGen_v2.2.zip)).
+`lemmagen3` is a Python 3 wrapper for the [Lemmagen lemmatizer](http://lemmatise.ijs.si/) (version [2.2](http://lemmatise.ijs.si/Download/File/Software%23LemmaGen_v2.2.zip)).
 
 It is different from other Lemmagen wrappers like [this one on PyPi](https://pypi.org/project/Lemmagen/) because it offers a clean, fast OO interface built with the excellent [pybind11 library](https://github.com/pybind/pybind11) and supports an additional language (Croatian).
 
