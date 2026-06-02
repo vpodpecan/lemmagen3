@@ -82,7 +82,7 @@ class BuildExt(build_ext):
     }
 
     if sys.platform == 'darwin':
-        darwin_opts = ['-stdlib=libc++', '-mmacosx-version-min=10.7']
+        darwin_opts = ['-stdlib=libc++']
         c_opts['unix'] += darwin_opts
         l_opts['unix'] += darwin_opts
 
@@ -116,9 +116,10 @@ setup(
     author='Vid Podpecan',
     author_email='vid.podpecan@ijs.si',
     url='https://github.com/vpodpecan/lemmagen3/',
-    description='A Python2/3 wrapper for Lemmagen lemmatizer supporting 19 languages.',
+    description='A Python 3 wrapper for Lemmagen lemmatizer supporting 19 languages.',
     long_description=long_description,
     long_description_content_type='text/markdown',
+    python_requires='>=3.8',
     ext_modules=ext_modules,
     include_package_data=True,
     install_requires=['pybind11>=2.4'],
@@ -127,9 +128,7 @@ setup(
     zip_safe=False,
     classifiers=[
         'Operating System :: OS Independent',
-        'Programming Language :: Python',
-        'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3 :: Only',
         'Topic :: Scientific/Engineering :: Information Analysis',
         'Topic :: Software Development :: Libraries'],
 )
